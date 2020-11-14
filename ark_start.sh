@@ -31,7 +31,7 @@ then
   cp `ls -1 ${SAVEDIR}/*.ark | tail -3` ${BACKUPDIR}
 
   #Force copy of TheIsland.ark
-  cp ${SAVEDIR}/Ragnarok.ark ${BACKUPDIR}
+  cp ${SAVEDIR}/${ARK_MAP:=TheIsland}.ark ${BACKUPDIR}
 
   echo -e "Updating Ark server ...."
   /steamcmd/steamcmd.sh +login anonymous +force_install_dir ${SERVERPATH} +app_update 376030 +quit
@@ -41,4 +41,4 @@ fi
 
 #Lauch the game server
 echo -e "Lauching Ark Server ...."
-${SERVERPATH}/ShooterGame/Binaries/Linux/ShooterGameServer Ragnarok?listen?SessionName=${ARK_SERVER_NAME:=[FR]Brookie-Ark}?ServerPassword=${ARK_SERVER_PASSWORD:=ark}?ServerAdminPassword=${ARK_SERVER_ADMIN_PASSWORD:=admin}?Port=${ARK_SERVER_PORT:=7777}?QueryPort=${ARK_SERVER_QUERYPORT:=27015}?allowThirdPersonPlayer=${ARK_BOOLEAN:=true}?alwaysNotifyPlayerLeft=${ARK_BOOLEAN:=true}?alwaysNotifyPlayerJoined=${ARK_BOOLEAN:=true}?serverPVE=${ARK_BOOLEAN:=true}?MaxPlayers=${ARK_MAX_PLAYER:=10} -nosteamclient -game -server -log ${ServerExtraArgs}
+${SERVERPATH}/ShooterGame/Binaries/Linux/ShooterGameServer ${ARK_MAP:=TheIsland}?listen?SessionName=${ARK_SERVER_NAME:=[FR]Brookie-Ark}?ServerPassword=${ARK_SERVER_PASSWORD:=ark}?ServerAdminPassword=${ARK_SERVER_ADMIN_PASSWORD:=admin}?Port=${ARK_SERVER_PORT:=7777}?QueryPort=${ARK_SERVER_QUERYPORT:=27015}?allowThirdPersonPlayer=${ARK_BOOLEAN:=true}?alwaysNotifyPlayerLeft=${ARK_BOOLEAN:=true}?alwaysNotifyPlayerJoined=${ARK_BOOLEAN:=true}?serverPVE=${ARK_BOOLEAN:=true}?MaxPlayers=${ARK_MAX_PLAYER:=10} -nosteamclient -game -server -log ${ServerExtraArgs}
